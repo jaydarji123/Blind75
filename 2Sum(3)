@@ -1,0 +1,19 @@
+#Brute force :- for every element traverse array from current element's next to end. TC=O(N^2)
+#using map and find the target-nums[i] value in map. TC=O(N)
+
+1) Input :- [2,1,3,4] target=5   Output :- [0,2]
+
+Function :- 
+vector<int> twoSum(vector<int>& nums, int target) {
+        unordered_map<int,int> mp;
+        for(int i=0;i<nums.size();i++){
+            int ans=target-nums[i];
+            if(mp.find(ans)!=mp.end()) {
+                return { mp.find(ans)->second, i};
+            }
+            else{
+                mp[nums[i]] = i;
+            }
+        }
+        return {-1,-1};
+}
