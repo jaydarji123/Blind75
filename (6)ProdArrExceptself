@@ -1,0 +1,20 @@
+#Brute force :- product of all element divide by current element. TC=O(N)
+#1st loop use for product of left elements of the curr element. 2nd loop use for product of right element with value of left element. TC=O(N)
+
+1) Input :- [1,2,3,4]  Output :- [24,12,8,6]
+
+Function :-
+vector<int> productExceptSelf(vector<int>& nums) {
+        vector<int> v(nums.size(),1);
+        int pre=nums[0];
+        for(int i=1;i<nums.size();i++){
+            v[i]=pre;
+            pre=pre*nums[i];
+        }
+        int post=nums[nums.size()-1];
+        for(int i=nums.size()-2;i>=0;i--){
+            v[i]=v[i]*post;
+            post=post*nums[i];
+        }
+        return v;
+}
